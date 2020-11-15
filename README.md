@@ -1,4 +1,4 @@
-# dbscan1
+# DBSCAN-for-Open-Clusters
 DBSCAN
 
 Алгоритм кластеризации данных DBSCAN для поиска и исследования рассеянных 
