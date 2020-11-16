@@ -37,7 +37,7 @@ def graphs(Data, unique_labels, labels, core_samples_mask, limits_ra_de, limits_
     
     
     
-    fig6 = plt.figure(6)
+    fig6 = plt.figure(2)
     plt.clf()
     for k, col in zip(unique_labels, colors):
         class_member_mask = (labels == k)
@@ -62,7 +62,7 @@ def graphs(Data, unique_labels, labels, core_samples_mask, limits_ra_de, limits_
     
     
     
-    fig2 = plt.figure(2)
+    fig2 = plt.figure(3)
     plt.clf()
     for k, col in zip(unique_labels, colors):
         class_member_mask = (labels == k)
@@ -83,11 +83,11 @@ def graphs(Data, unique_labels, labels, core_samples_mask, limits_ra_de, limits_
     plt.ylim(limits_pmra_pmde[1])
     plt.xlabel('pmra')
     plt.ylabel('pmdec')
-    plt.show(2)
+    plt.show()
     
     
     
-    fig5 = plt.figure(5)
+    fig5 = plt.figure(4)
     plt.clf()
     for k, col in zip(unique_labels, colors):
         if k == -1:
@@ -107,7 +107,7 @@ def graphs(Data, unique_labels, labels, core_samples_mask, limits_ra_de, limits_
     y1,y2=plt.gca().get_ylim()
     x1,x2=plt.gca().get_xlim()
     plt.gca().invert_yaxis()
-    plt.show(5)
+    plt.show()
     
     
     Data['labels']=labels

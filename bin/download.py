@@ -1,7 +1,6 @@
 from astroquery.gaia import Gaia
-import sys
 import pandas as pd
-import numpy as np
+
 
 
 def gaiadata(ra, dec, radius = 0.0833):
@@ -32,9 +31,12 @@ def gaiadata(ra, dec, radius = 0.0833):
     Data=pd.read_csv('data.csv')
     Data.rename(columns={'ra': 'RA_ICRS', 'dec': 'DE_ICRS', 'parallax': 'Plx', 'pmra': 'pmRA', 'pmdec': 'pmDE', 'phot_g_mean_mag': 'Gmag','bp_rp': 'BP_RP'},inplace=True)
     Data.to_csv('data.csv',index=False)
-    return 
+    a = list(Data)
+    b = [a[0],a[1],a[4],a[6],a[8]]
+    print(b)
+    return Data, b
 #gaiadata.__doc__ = """Download data from Gaia DR 2 in circle with set coordinates"""
 #Examples
 #--------
 #>>> from download import gaiadata
-#>>> gaiadata(100, 100)
+#>>> gaiadata(50, 50)
