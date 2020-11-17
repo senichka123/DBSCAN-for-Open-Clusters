@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
-from sklearn.decomposition import PCA
 # general packages
 
 import ocscan.download
@@ -12,9 +11,9 @@ import ocscan.show
 
 
 	
-def dbscan(N, eps, ra, de, plot=False, save=False):
+def dbscan(N, eps, ra, de, plot=False, save=False, input=False):
 	"""Searching for clusters in data on the basis of DBSCAN algorithm and Principal Component Analysis in 4D hyper-sphere"""
-	data = ocscan.download.gaiadata(ra, de) # ra,dec,radius in degrees (radius_default = 0.0833 -> 5 arcmin)
+	data = ocscan.download.gaiadata(ra, de, SaveData = input) # ra,dec,radius in degrees (radius_default = 0.0833 -> 5 arcmin)
 									  # download data from gaia dr2
 	names=['pmRA','pmDE','RA_ICRS','DE_ICRS'] 
 	N_dim = len(names)				  # dimensions. 					  

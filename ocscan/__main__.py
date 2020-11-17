@@ -16,13 +16,14 @@ def _parse_args(args=None):
 	parser.add_argument('-r', '--ra', default = 124.90, help='right accession', type = float)
 	parser.add_argument('-d', '--de', default = -38.27, help='declination', type = float)
 	parser.add_argument('-p', '--plot', action='store_true', help='plot graphs')
+	parser.add_argument('-i', '--saveinput', action='store_true', help='saving input file into .csv')
 	parser.add_argument('-s', '--saveresults', action='store_true', help='saving results into .csv files')
 	namespace = parser.parse_args()
 	return namespace
 
 def main():
 	p = _parse_args()
-	labels = ocscan.dbscan(p.N, p.eps, p.ra, p.de, p.plot, p.saveresults)
+	labels = ocscan.dbscan(p.N, p.eps, p.ra, p.de, p.plot, p.saveresults, p.saveinput)
 	ocscan.show.NumberOfClusters(labels)
 
 if __name__ == '__main__':	
