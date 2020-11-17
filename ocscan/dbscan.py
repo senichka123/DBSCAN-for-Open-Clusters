@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
 # general packages
 
 import ocscan.download
@@ -22,8 +23,9 @@ def dbscan(N, eps, ra, de, plot=False, save=False, input=False):
 	for x in names:
 		mask=mask & data[x].notna()   # deleting empty data lines (table strings)
 
-	Data=data[mask]    
-	NormMainData = np.true_divide(Data[names], list(Data[names].std()))
+	Data=data[mask]   
+	NormMainData = StandardScaler().fit_transform(Data[names])
+	#NormMainData = np.true_divide(Data[names], list(Data[names].std()))
 	db = DBSCAN(eps, N).fit(NormMainData)
 	Data['labels']=db.labels_
 	core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
