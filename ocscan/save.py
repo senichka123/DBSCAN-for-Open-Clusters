@@ -1,6 +1,7 @@
 import numpy as np
 
-def results(Data, labels, core_samples_mask):    
+def results(Data, labels, core_samples_mask):   
+    """Save results into .csv file"""
     unique_labels = set(labels)
     for k in unique_labels:
         if k == -1:
