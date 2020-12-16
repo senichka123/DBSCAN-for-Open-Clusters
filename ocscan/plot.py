@@ -5,6 +5,12 @@ from matplotlib import cm
 
 
 def graphs(Data, labels, core_samples_mask):
+    """Plot 4 main graphs for DBSCAN - data
+    Plx - Gmag
+    RA - DEC
+    pmRA - pmDE
+    BP-RP - Gmag
+    """
     unique_labels = set(labels)
     plt.rcParams["figure.figsize"] = (5, 5)
     colors = [plt.cm.Spectral(each)
