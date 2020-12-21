@@ -5,12 +5,11 @@ from matplotlib import cm
 
 
 def graphs(Data, labels, core_samples_mask):
-    """Plot 4 main graphs for DBSCAN - data
-    Plx - Gmag
-    RA - DEC
-    pmRA - pmDE
-    BP-RP - Gmag
-    """
+    """Plot 4 main graphs for DBSCAN - data 
+    Plx - Gmag 
+    RA - DEC 
+    pmRA - pmDE 
+    BP-RP - Gmag """
     unique_labels = set(labels)
     plt.rcParams["figure.figsize"] = (5, 5)
     colors = [plt.cm.Spectral(each)
@@ -19,14 +18,13 @@ def graphs(Data, labels, core_samples_mask):
     fig1 = plt.figure(1)
     plt.clf()
     for k, col in zip(unique_labels, colors):
-        
         if k == -1:
             continue
         class_member_mask = (labels == k)
         xy = Data[class_member_mask & core_samples_mask]
         plt.plot(xy.Plx, xy.pmRA, 'o', markerfacecolor=tuple(col),
                  markeredgecolor='k', markersize=9)
-        if k==-1:
+        if k == -1:
             xy = Data[class_member_mask & ~core_samples_mask]
             plt.plot(xy.Plx, xy.pmRA, 'o', markerfacecolor=tuple(col),
                markeredgecolor='b', markersize=1, alpha=0.5)
@@ -114,10 +112,3 @@ def graphs(Data, labels, core_samples_mask):
     plt.gca().invert_yaxis()
     plt.show()
     
-    
-    Data['labels']=labels
-    Data[class_member_mask & core_samples_mask].to_csv('res-centers.csv',index=False, mode = 'w')
-    Data[class_member_mask & ~core_samples_mask].to_csv('res-neighbours.csv',index=False, mode = 'w')
-    Data[class_member_mask].to_csv('res-cluster.csv',index=False, mode = 'w')
-
-graphs.__doc__ = """Ploting results (only graphs) + saving results (into .csv files)"""
