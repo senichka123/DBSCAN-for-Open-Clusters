@@ -23,8 +23,13 @@ def _parse_args(args=None):
 
 def main():
 	p = _parse_args()
-	labels = ocscan.dbscan(p.N, p.eps, p.ra, p.de, p.plot, p.saveresults, p.saveinput)
-	ocscan.show.NumberOfClusters(labels)
+	data = ocscan.download.gaiadata(p.ra, p.de, save_data=input)
+	mytuple = ocscan.dbscan(data, p.N, p.eps, p.saveinput)
+	ocscan.show.NumberOfClusters(mytuple[1])
+	if p.plot:
+		ocscan.plot.graphs(mytuple[0], mytuple[1], mytuple[2])
+	if p.saveresults:
+		ocscan.save.results(mytuple[0], mytuple[1], mytuple[2])
 
 if __name__ == '__main__':	
 	main()
